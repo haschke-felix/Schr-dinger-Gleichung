@@ -5,11 +5,11 @@ from fractions import Fraction
 
 C=Fraction(2.62E19)
 K=Fraction(1.44E-9)
-DR=Fraction(1E-14)
 
-def sim(W,  r_start=1e-14, psi_start=0, psi1_start=1,  n=1000):
+def sim( W, DR_ =1E-14,   r_start=1e-14, psi_start=0, psi1_start=1,  n=1000):
     R = Fraction(r_start)
    
+    DR=Fraction(DR_)
     #W= -3.39418966425 #-1.50873324/4 #-1.50873324; -3,4; -13.6 
     psi = Fraction(psi_start)
     psi1 = Fraction(psi1_start)
@@ -39,7 +39,7 @@ radius_proton=0.88e-12
 
 #x, psi = sim(n=3000)
 
-def approx(startW, nStart, targetN=3000, DN=100000, targetD=1e-12):
+def approx(startW, nStart, targetN=3000, DN=1000, targetD=1e-12):
     DW = Fraction(0.01)
     W= Fraction(startW)
     n = nStart
@@ -69,7 +69,7 @@ def approx(startW, nStart, targetN=3000, DN=100000, targetD=1e-12):
     return float(W)
 
 n= 1000000
-W = approx(startW=-3.4, nStart=100000, targetN=n)
+W = approx(startW=-3.4, nStart=100000, targetN=n, DN=1000)
 print(W)
 x, psi = sim(n=n, W=W)
 
